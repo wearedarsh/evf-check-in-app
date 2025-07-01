@@ -37,6 +37,13 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "0d9a80ae-736c-42bf-bf06-b010723af2a3"
+      }
+    },
+    "owner": "europeanvenousforum"
   }
 }
