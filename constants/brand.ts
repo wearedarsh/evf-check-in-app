@@ -1,10 +1,14 @@
 export const brand = {
     copy: {
-        index: 
+        login: 
             { 
                 title: 'EVENT CHECK IN',
-                loginButton: 'Log in',
-                copyright: (year: number) => `© ${year} European Venous Forum`
+                button: 'Login',
+                copyright: (year: number) => `© ${year} European Venous Forum Ltd`
+            },
+        courses:
+            {
+                headerTitle: 'Select a course',
             }
     }
 
