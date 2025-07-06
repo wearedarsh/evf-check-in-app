@@ -1,0 +1,43 @@
+{
+  "cli": {
+    "version": ">= 3.0.0"
+  },
+  "build": {
+    "development": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "simulator": true
+      },
+      "env": {
+        "ENV": "development",
+        "EVENT_SCAN_CLIENT_ID": "EVENT_SCAN_CLIENT_ID_DEV",
+        "EVENT_SCAN_APP_WEBHOOK_URL": "EVENT_SCAN_APP_WEBHOOK_URL_DEV",
+        "EVENT_CHECK_IN_WEBHOOK_URL": "EVENT_SCAN_CHECK_IN_WEBHOOK_URL_DEV",
+        "EVENT_SCAN_ENCRYPTION_KEY": "EVENT_SCAN_ENCRYPTION_KEY_DEV",
+        "EVENT_SCAN_WEBHOOK_SECRET": "EVENT_SCAN_WEBHOOK_SECRET"
+      }
+    },
+    "production": {
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "ios": {
+        "simulator": false
+      },
+      "env": {
+        "ENV": "production",
+        "EVENT_SCAN_CLIENT_ID": "EVENT_SCAN_CLIENT_ID_PROD",
+        "EVENT_SCAN_APP_WEBHOOK_URL": "EVENT_SCAN_APP_WEBHOOK_URL_PROD",
+        "EVENT_CHECK_IN_WEBHOOK_URL": "EVENT_SCAN_CHECK_IN_WEBHOOK_URL_PROD",
+        "EVENT_SCAN_ENCRYPTION_KEY": "EVENT_SCAN_ENCRYPTION_KEY_PROD",
+        "EVENT_SCAN_WEBHOOK_SECRET": "EVENT_SCAN_WEBHOOK_SECRET"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
