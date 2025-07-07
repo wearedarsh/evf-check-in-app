@@ -9,6 +9,17 @@ export const brand = {
         courses:
             {
                 headerTitle: 'Select a course',
+                loadingCopy: 'Loading courses...'
+            },
+        sessionGroups:
+            {
+                headerTitle: 'Select a group',
+                loadingCopy: 'Loading groups...'
+            },
+        sessions:
+            {
+                headerTitle: 'Select a session',
+                loadingCopy: 'Loading sessions...'
             }
     }
 

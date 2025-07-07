@@ -1,17 +1,8 @@
 import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import "../../assets/style/global.css";
-import { AuthProvider } from '../../context/AuthContext';
+import LogoutButton from '../../components/ui/LogoutButton';
 
-export default function RootLayout() {
-
-    return (
-        <AuthProvider>
-            <SafeAreaProvider>
-                <StatusBar />
-                <Stack />
-            </SafeAreaProvider>
-        </AuthProvider>
-    )
+export default function AppLayout() {
+	return <Stack screenOptions={{
+				headerRight: () => <LogoutButton />,
+			}} />;
 }
