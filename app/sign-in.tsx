@@ -37,7 +37,7 @@ export default function LoginScreen() {
 						<View className="flex-1 justify-center items-center px-6">
 							<Image
 								className="mb-3"
-								source={require('../assets/images/logo-white.png')}
+								source={require('../assets/images/logo.png')}
 								style={{ width: 266, height: 40 }}
 								resizeMode="contain"
 							/>

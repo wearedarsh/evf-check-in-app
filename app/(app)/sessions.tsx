@@ -1,4 +1,4 @@
-import { useLocalSearchParams, useNavigation } from 'expo-router';
+import { useLocalSearchParams, useNavigation, useRouter } from 'expo-router';
 import {
 	useEffect,
 	useState,
@@ -19,7 +19,8 @@ export default function SessionGroups() {
 	const [sessions, setSessions] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [refreshing, setRefreshing] = useState(false);
-	const { group_id } = useLocalSearchParams();
+	const { group_id, group_title, course_id } = useLocalSearchParams();
+	const router = useRouter();
 
 	const fetchSessions = async () => {
 		setLoading(true);
@@ -44,10 +45,13 @@ export default function SessionGroups() {
 
 	return (
 		<SafeAreaView className="flex-1 items-center">
+			<Text className="text-black text-l font-bold text-center">
+				{group_title}
+			</Text>
 			<View className="flex-1 px-3 pt-3">
 				{loading && !refreshing ? (
 					<Text className="text-brand-secondary text-m font-bold text-center">{brand.copy.sessions.loadingCopy}</Text>
-				) : (
+				) : sessions.length > 0 ? (
 					<FlatList
 						data={sessions}
 						keyExtractor={(item) => String(item.id)}
@@ -56,7 +60,10 @@ export default function SessionGroups() {
 								<Button
 									label={item.title + ' at ' + item.start_time + '-' + item.end_time}
 									onPress={() => {
-										console.log(item.id)
+										router.push({
+											pathname:'/check-in-confirm',
+											params: {session_id: item.id, session_title: item.title, session_start_time: item.start_time, session_end_time: item.end_time, course_id: course_id}
+										})
 									}}
 								/>
 							</View>
@@ -64,6 +71,10 @@ export default function SessionGroups() {
 						refreshing={refreshing}
 						onRefresh={onRefresh}
 					/>
+				) : (
+					<Text className="text-brand-secondary text-m font-bold text-center">
+						{brand.copy.courses.noDataCopy}
+					</Text>
 				)}
 			</View>
 		</SafeAreaView>

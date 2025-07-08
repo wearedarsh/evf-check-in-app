@@ -46,30 +46,37 @@ export default function Courses() {
 	return (
 		<SafeAreaView className="flex-1 items-center">
 			<View className="flex-1 px-3 pt-3">
-				{loading && !refreshing ? (
-					<Text className="text-brand-secondary text-m font-bold text-center">{brand.copy.courses.loadingCopy}</Text>
-				) : (
-					<FlatList
-						data={courses}
-						keyExtractor={(item) => String(item.id)}
-						renderItem={({ item }) => (
-							<View className="mb-3">
-								<Button
-									label={item.title}
-									onPress={() => {
-										router.push({
-											pathname: '/session-groups',
-											params: { course_id: item.id }
-										});
-									}}
-								/>
-							</View>
-						)}
-						refreshing={refreshing}
-						onRefresh={onRefresh}
+	{loading && !refreshing ? (
+		<Text className="text-brand-secondary text-m font-bold text-center">
+			{brand.copy.courses.loadingCopy}
+		</Text>
+	) : courses.length > 0 ? (
+		<FlatList
+			data={courses}
+			keyExtractor={(item) => String(item.id)}
+			renderItem={({ item }) => (
+				<View className="mb-3">
+					<Button
+						label={item.title}
+						onPress={() => {
+							router.push({
+								pathname: '/session-groups',
+								params: { course_id: item.id, course_title: item.title },
+							});
+						}}
 					/>
-				)}
-			</View>
+				</View>
+			)}
+			refreshing={refreshing}
+			onRefresh={onRefresh}
+		/>
+	) : (
+		<Text className="text-brand-secondary text-m font-bold text-center">
+			{brand.copy.courses.noDataCopy}
+		</Text>
+	)}
+</View>
+
 		</SafeAreaView>
 	);
 }

@@ -19,7 +19,7 @@ export default function SessionGroups() {
 	const [groups, setGroups] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [refreshing, setRefreshing] = useState(false);
-	const { course_id } = useLocalSearchParams();
+	const { course_id, course_title } = useLocalSearchParams();
 
 	const router = useRouter();
 
@@ -46,10 +46,13 @@ export default function SessionGroups() {
 
 	return (
 		<SafeAreaView className="flex-1 items-center">
+			<Text className="text-black text-l font-bold text-center">
+				{course_title}
+			</Text>
 			<View className="flex-1 px-3 pt-3">
 				{loading && !refreshing ? (
 					<Text className="text-brand-secondary text-m font-bold text-center">{brand.copy.sessionGroups.loadingCopy}</Text>
-				) : (
+				) : groups.length > 0 ? (
 					<FlatList
 						data={groups}
 						keyExtractor={(item) => String(item.id)}
@@ -60,7 +63,7 @@ export default function SessionGroups() {
 									onPress={() => {
 										router.push({
 											pathname: '/sessions',
-											params: { group_id: item.id }
+											params: { group_id: item.id, group_title: item.friendly_name, course_id: course_id }
 										});
 									}}
 								/>
@@ -69,6 +72,10 @@ export default function SessionGroups() {
 						refreshing={refreshing}
 						onRefresh={onRefresh}
 					/>
+				) : (
+					<Text className="text-brand-secondary text-m font-bold text-center">
+						{brand.copy.sessionGroups.noDataCopy}
+					</Text>
 				)}
 			</View>
 		</SafeAreaView>

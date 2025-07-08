@@ -9,17 +9,27 @@ export const brand = {
         courses:
             {
                 headerTitle: 'Select a course',
-                loadingCopy: 'Loading courses...'
+                loadingCopy: 'Loading courses...',
+                noDataCopy: 'You have no active courses'
             },
         sessionGroups:
             {
                 headerTitle: 'Select a group',
-                loadingCopy: 'Loading groups...'
+                loadingCopy: 'Loading groups...',
+                noDataCopy: 'You have no active groups'
             },
         sessions:
             {
                 headerTitle: 'Select a session',
-                loadingCopy: 'Loading sessions...'
+                loadingCopy: 'Loading sessions...',
+                noDataCopy: 'You have no sessions for this group'
+            },
+        checkInConfirm:
+            {
+                headerTitle: 'Check in delegates',
+                subTitle: 'How would you like to check in your delegates?',
+                manualButton: 'Use list',
+                scanButton: 'Scan badges'
             }
     }
 

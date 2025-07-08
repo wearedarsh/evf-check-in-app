@@ -7,7 +7,7 @@ const LogoutButton = () => {
 
 	return (
 		<TouchableOpacity onPress={logout}>
-			<Text className="text-m text-brand-primary mr-4">Logout</Text>
+			<Text className="text-m text-brand-secondary mr-4">Logout</Text>
 		</TouchableOpacity>
 	);
 }
