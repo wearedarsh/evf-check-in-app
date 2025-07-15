@@ -30,6 +30,14 @@ export const brand = {
                 subTitle: 'How would you like to check in your delegates?',
                 manualButton: 'Use list',
                 scanButton: 'Scan badges'
+            },
+        scanBadges:
+            {
+                headerTitle: 'Scan badges',
+                successfulScanAlertTitle: 'Success',
+                successfulScanAlertBody: 'Scan successful',
+                duplicateScanAlertTitle: 'Duplicate scan',
+                duplicateScanAlertBody: 'This delegate has been checked in to this session already'
             }
     }
 

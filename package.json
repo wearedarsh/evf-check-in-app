@@ -1,12 +1,12 @@
 {
-  "name": "evf-check-in-app",
+  "name": "evf-how-check-in-app",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
     "lint": "expo lint"
   },
@@ -15,9 +15,12 @@
     "@react-navigation/bottom-tabs": "^7.3.10",
     "@react-navigation/elements": "^2.3.8",
     "@react-navigation/native": "^7.1.6",
+    "crypto-js": "^4.2.0",
     "dotenv": "^17.0.1",
     "expo": "~53.0.15",
+    "expo-av": "~15.1.7",
     "expo-blur": "~14.1.5",
+    "expo-camera": "~16.1.10",
     "expo-constants": "~17.1.6",
     "expo-dev-client": "~5.2.2",
     "expo-font": "~13.3.2",
@@ -25,6 +28,7 @@
     "expo-image": "~2.3.1",
     "expo-linking": "~7.1.6",
     "expo-router": "~5.1.2",
+    "expo-secure-store": "~14.2.3",
     "expo-splash-screen": "~0.30.9",
     "expo-status-bar": "~2.2.3",
     "expo-symbols": "~0.4.5",
@@ -39,10 +43,7 @@
     "react-native-safe-area-context": "^5.4.0",
     "react-native-screens": "~4.11.1",
     "react-native-web": "~0.20.0",
-    "react-native-webview": "13.13.5",
-    "expo-secure-store": "~14.2.3",
-    "expo-camera": "~16.1.10",
-    "expo-av": "~15.1.7"
+    "react-native-webview": "13.13.5"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

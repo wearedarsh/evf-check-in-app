@@ -1,18 +1,19 @@
 {
   "expo": {
-    "name": "evf-check-in-app",
-    "slug": "evf-check-in-app",
+    "name": "EVF HOW Check-In App",
+    "slug": "evf-how-check-in-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "evfcheckinapp",
+    "scheme": "evfhowcheckinapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.europeanvenousforum.evfcheckinapp",
+      "bundleIdentifier": "com.europeanvenousforum.evfhowcheckinapp",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSCameraUsageDescription": "This app uses the camera to scan delegate badges."
       }
     },
     "android": {
@@ -20,7 +21,8 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.eventscan.evfhowcheckinapp"
     },
     "web": {
       "bundler": "metro",
@@ -29,9 +31,9 @@
     },
     "plugins": [
       "expo-camera",
-        {
-          "cameraPermission": "Allow EVF Check in app to access your camera"
-        },
+      {
+        "cameraPermission": "Allow EVF Check in app to access your camera"
+      },
       "expo-router",
       [
         "expo-splash-screen",
@@ -48,8 +50,9 @@
     },
     "extra": {
       "router": {},
+      "EVENT_SCAN_CHECK_IN_WEBHOOK_URL": "https://management.eventscan.com/webhooks/checkin",
       "eas": {
-        "projectId": "0d9a80ae-736c-42bf-bf06-b010723af2a3"
+        "projectId": "dab8ff82-cb1b-4f34-a4e5-2223f853a94a"
       }
     },
     "owner": "europeanvenousforum"

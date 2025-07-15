@@ -2,17 +2,17 @@ import 'dotenv/config';
 
 export default ({ config }) => ({
   ...config,
-  name: 'evf-check-in-app',
-  slug: 'evf-check-in-app',
+  name: 'evf-how-check-in-app',
+  slug: 'evf-how-check-in-app',
   version: '1.0.0',
   orientation: 'portrait',
   icon: './assets/images/icon.png',
-  scheme: 'evfcheckinapp',
+  scheme: 'evfhowcheckinapp',
   userInterfaceStyle: 'automatic',
   newArchEnabled: true,
   ios: {
     supportsTablet: true,
-    bundleIdentifier: 'com.europeanvenousforum.evfcheckinapp',
+    bundleIdentifier: 'com.europeanvenousforum.evfhowcheckinapp',
     infoPlist: {
       ITSAppUsesNonExemptEncryption: false,
     },
@@ -48,13 +48,10 @@ export default ({ config }) => ({
   extra: {
     router: {},
     eas: {
-      projectId: '0d9a80ae-736c-42bf-bf06-b010723af2a3',
+      projectId: "dab8ff82-cb1b-4f34-a4e5-2223f853a94a"
     },
-    EXPO_PUBLIC_EVENT_SCAN_CLIENT_ID: process.env.EXPO_PUBLIC_EVENT_SCAN_CLIENT_ID,
-    EXPO_PUBLIC_EVENT_SCAN_APP_WEBHOOK_URL: process.env.EXPO_PUBLIC_EVENT_SCAN_APP_WEBHOOK_URL,
-    EXPO_PUBLIC_EVENT_SCAN_CHECK_IN_WEBHOOK_URL: process.env.EXPO_PUBLIC_EVENT_SCAN_CHECK_IN_WEBHOOK_URL,
-    EXPO_PUBLIC_EVENT_SCAN_ENCRYPTION_KEY: process.env.EXPO_PUBLIC_EVENT_SCAN_ENCRYPTION_KEY,
-    EXPO_PUBLIC_EVENT_SCAN_WEBHOOK_SECRET: process.env.EXPO_PUBLIC_EVENT_SCAN_WEBHOOK_SECRET,
+    EVENT_SCAN_APP_WEBHOOK_URL: process.env.EVENT_SCAN_APP_WEBHOOK_URL,
+    EVENT_SCAN_CHECK_IN_WEBHOOK_URL: process.env.EVENT_SCAN_CHECK_IN_WEBHOOK_URL,
   },
   owner: 'europeanvenousforum',
 });

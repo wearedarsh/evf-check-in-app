@@ -1,18 +1,24 @@
 import { CameraView } from 'expo-camera';
 import Constants from 'expo-constants';
 import * as Haptics from 'expo-haptics';
-import { useLocalSearchParams } from 'expo-router';
-import { useRef, useState } from 'react';
+import { useLocalSearchParams, useNavigation } from 'expo-router';
+import { useEffect, useRef, useState } from 'react';
 import { Alert, Text, View } from 'react-native';
+import { brand } from '../../constants/brand';
 
 export default function BadgeScanner() {
 	const [scanned, setScanned] = useState(false);
 	const isProcessing = useRef(false);
+	const navigation = useNavigation();
 
 	const { course_id, session_id } = useLocalSearchParams();
 	const client_id = Constants.expoConfig?.extra?.EXPO_PUBLIC_EVENT_SCAN_CLIENT_ID;
 	const base_url = Constants.expoConfig?.extra?.EXPO_PUBLIC_EVENT_SCAN_CHECK_IN_WEBHOOK_URL;
 	const secret = Constants.expoConfig?.extra?.EXPO_PUBLIC_EVENT_SCAN_WEBHOOK_SECRET;
+
+	useEffect(() => {
+		navigation.setOptions({ title: brand.copy.sessionGroups.headerTitle });
+	}, [navigation]);
 
 	const handleScan = async ({ data }: { data: string }) => {
 		if (isProcessing.current) return;
@@ -22,7 +28,6 @@ export default function BadgeScanner() {
 		Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
 
 		try {
-            console.log('qr_payload:', data)
 			const response = await fetch(`${base_url}${secret}`, {
 				method: 'POST',
 				headers: {
@@ -33,7 +38,7 @@ export default function BadgeScanner() {
 					qr_payload: data,
 					course_id: parseInt(course_id as string),
 					event_session_id: parseInt(session_id as string),
-					checked_in_by: 1, // Replace with actual user ID if known
+					checked_in_by: 1,
 					checked_in_route: 'app-scan',
 				}),
 			});
@@ -41,7 +46,15 @@ export default function BadgeScanner() {
 			const json = await response.json();
 
 			if (response.ok) {
-				Alert.alert('Success', 'Delegate checked in', [
+
+				if (json.status === 'duplicate') {
+					Alert.alert(brand.copy.scanBadges.duplicateScanAlertTitle, brand.copy.scanBadges.duplicateScanAlertBody, [
+						{ text: 'Ok', onPress: () => resetScanner() }
+					]);
+					return;
+				}
+
+				Alert.alert(brand.copy.scanBadges.successfulScanAlertTitle, brand.copy.scanBadges.successfulScanAlertBody, [
 					{ text: 'Scan another', onPress: () => resetScanner() },
 				]);
 			} else {
