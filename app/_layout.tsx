@@ -1,7 +1,7 @@
 import { Stack } from 'expo-router';
 import '../assets/style/global.css';
 import { AuthProvider, useAuth } from '../context/auth';
-import { useProvisioning } from '../hooks/useProvisioning';
+import { ProvisioningProvider, useProvisioning } from '../context/provisioning';
 
 function Layout() {
 	const { user, loading: authLoading } = useAuth();
@@ -21,7 +21,9 @@ function Layout() {
 export default function RootLayout() {
 	return (
 		<AuthProvider>
-			<Layout />
+			<ProvisioningProvider>
+				<Layout />
+			</ProvisioningProvider>
 		</AuthProvider>
 	);
 }

@@ -22,6 +22,7 @@ export default ({ config }) => ({
       foregroundImage: './assets/images/adaptive-icon.png',
       backgroundColor: '#ffffff',
     },
+    package: "com.europeanvenousforum.evfhowcheckinapp",
     edgeToEdgeEnabled: true,
   },
   web: {

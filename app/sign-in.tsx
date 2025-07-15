@@ -1,3 +1,4 @@
+import * as SecureStore from 'expo-secure-store';
 import { useState } from 'react';
 import { Alert, Image, Keyboard, KeyboardAvoidingView, Platform, StatusBar, Text, TouchableWithoutFeedback, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -14,6 +15,12 @@ export default function LoginScreen() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const year = new Date().getFullYear();
+
+	const clearStorage = async () => {
+		await SecureStore.deleteItemAsync('client_id');
+		await SecureStore.deleteItemAsync('auth_token');
+		setProvisioned(false);
+	}
 
 	const handleLogin = async () => {
 		if (email === '' || password === '') {
@@ -48,6 +55,7 @@ export default function LoginScreen() {
 							<Input label="Email" value={email} secure={false} onChangeText={setEmail} />
 							<Input label="Password" value={password} secure={true} onChangeText={setPassword} />
 							<Button label={brand.copy.login.button} onPress={handleLogin} />
+							<Button label="Clear secure storage" onPress={clearStorage} />
 						</View>
 					</KeyboardAvoidingView>
 				</TouchableWithoutFeedback>
